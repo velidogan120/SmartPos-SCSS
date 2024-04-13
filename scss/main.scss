@@ -6,14 +6,13 @@
 
 #main{
     &-nav{
-        &.container{
-            position: relative;
-        }
-        nav{
-            position: absolute;
-            top: 0;
+        position: fixed;
+        width: 100%;
+        z-index: 110;
+        background: rgba(255,255,255,.9);
+        border-bottom: 2px solid #ff5195;
+        nav{        
             width: 100%;
-            z-index: 3;
             display: flex;
             padding: 2rem;
             img{
@@ -22,6 +21,8 @@
             &>ul{
                 display: flex;
                 align-items: center;
+                flex-wrap: wrap;
+                justify-content: center;
                 margin-left: auto;
                 gap: 2rem;
                 margin-right: 2rem;
@@ -151,6 +152,11 @@
     padding: 95px 2rem;
     &.background{
         background-color: #fffcfa;
+    }
+    &.row-reverse{
+        .container{
+            flex-direction: row-reverse;
+        }
     }
     .container{
         display: flex;
@@ -336,12 +342,13 @@
 }
 .main-footer{
     background: url("../img/app-footer-bg.jpg");
+    background-size: cover;
     padding: 3rem 2rem 1.5rem;
     color: $white-color;
     &-top{
         display: flex;
-        padding: 2.5rem 0;
-        border-bottom: 1px solid rgba(255,255,255,.8);
+        padding: 0 0 2.5rem 0;
+        align-items: center;
         &>*{
             flex:1;
         }
@@ -354,7 +361,10 @@
             &>div{
                 color: $black-color;
                 display: inline-block;
-                padding: 10px 30px;
+                margin-bottom: 1rem;
+                width: 245px;
+                text-align: left;
+                padding: 10px 20px;
                 background: rgba(255,255,255,1);
                 div{
                     display: inline-block;
@@ -366,9 +376,13 @@
     &-middle{
         display: grid;
         grid-template-columns: repeat(4,1fr);
-        margin: 3rem 0;
+        margin: 2rem 0;
+        &>*{            
+            border-top: 1px solid rgba(255,255,255,1);
+            padding: 1.5rem 0;
+        }
         ul {
-            margin-top: 2rem;
+            margin-top: 1rem;
             li{
                 a{
                     margin-top: 1rem;
@@ -384,5 +398,133 @@
     }
     &-bottom{
         border-top: 1px solid rgba(255,255,255,.8);
+    }
+}
+@media (max-width:768px){
+    #main{
+        &-nav{
+            nav{
+                flex-wrap: wrap;
+                justify-content: center;
+                row-gap: 1rem;
+                &>ul{                   
+                    margin-right: 0;
+                    margin-left: 0;                                  
+                }  
+            }        
+        }
+        &-header{
+            padding: 17rem 0;
+            .page-bg{
+                display: none;
+            }
+            &-content{
+                .container{
+                    flex-wrap: wrap;
+                    row-gap: 2rem;
+                    & > *{                       
+                        flex: 100%;
+                    }                
+                }
+                &-left{
+                    h1{
+                        font-size: 2.5rem;
+                    }
+                }
+            }
+        }
+    }
+    .pos-section{
+        &.row-reverse{
+            .container{
+                flex-direction: column-reverse;
+                row-gap: 2rem;
+            }
+        }
+        .container{
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+            row-gap: 2rem;
+            & > *{
+                flex: 100%;
+            }
+        }
+    }
+    .service{
+        &-cards{
+            grid-template-columns: repeat(2,1fr);            
+        }
+    }
+    .about{
+        &-cards{
+            grid-template-columns: repeat(2,1fr);            
+        }
+    }
+    .testimonial{
+        &-cards{
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+    .sponsor-section{
+        grid-template-columns: repeat(3,1fr);
+        row-gap: 2rem;
+    }
+    .main-footer{
+        &-middle{
+            grid-template-columns: repeat(2,1fr);
+            row-gap: 2rem;
+        }
+    }
+}
+@media (max-width:450px){
+    #main{
+        &-header{
+            padding: 17rem 0;
+        }
+    }
+    .pos-section{
+        .container{
+            .section-left{
+                .content{
+                    ul{
+                        li{
+                            width: 100%;                    
+                        }
+                    }
+                }                
+            }
+        }
+    }
+    .service{
+        &-cards{
+            grid-template-columns: repeat(1,1fr);            
+        }
+    }
+    .about{
+        &-cards{
+            grid-template-columns: repeat(1,1fr);            
+        }
+    }
+    .testimonial{
+        &-cards{
+            grid-template-columns: repeat(1,1fr);
+        }
+    }
+    .sponsor-section{
+        grid-template-columns: repeat(2,1fr);
+        row-gap: 2rem;
+    }
+    .main-footer{
+        &-top{
+            flex-wrap: wrap;
+            row-gap: 1rem; 
+            &-right{
+                text-align: start;
+            }
+        }
+        &-middle{
+            grid-template-columns: repeat(1,1fr);
+        }
+       
     }
 }
